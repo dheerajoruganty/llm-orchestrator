@@ -1,11 +1,13 @@
 import os
 import time
+import wget
 import json
 import yaml
 import boto3
 import base64
 import logging
 import paramiko
+import urllib.parse
 from scp import SCPClient
 from botocore.exceptions import NoCredentialsError, ClientError
 
@@ -643,3 +645,84 @@ def upload_and_execute_script_invoke_shell(
     except Exception as e:
         print(f"Error connecting via SSH to {hostname}: {e}")
         return None
+
+
+def is_url(path):
+    """Checks if a given path is a URL."""
+    parsed = urllib.parse.urlparse(path)
+    return parsed.scheme in ("http", "https")
+
+
+# Asynchronous function to download a configuration file if it is a URL
+async def download_config_async(url, download_dir="downloaded_configs"):
+    """Asynchronously downloads the configuration file from a URL."""
+    os.makedirs(download_dir, exist_ok=True)
+    local_path = os.path.join(download_dir, os.path.basename(url))
+    # Run the blocking download operation in a separate thread
+    await asyncio.get_event_loop().run_in_executor(
+        executor, wget.download, url, local_path
+    )
+    return local_path
+
+
+# Asynchronous function to upload a file to the EC2 instance
+async def upload_file_to_instance_async(
+    hostname, username, key_file_path, local_path, remote_path
+):
+    """Asynchronously uploads a file to the EC2 instance."""
+
+    def upload_file():
+        try:
+            # Initialize the SSH client
+            ssh_client = paramiko.SSHClient()
+            ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+
+            # Load the private key
+            private_key = paramiko.RSAKey.from_private_key_file(key_file_path)
+
+            # Connect to the instance
+            ssh_client.connect(hostname, username=username, pkey=private_key)
+            print(f"Connected to {hostname} as {username}")
+
+            # Upload the file
+            with SCPClient(ssh_client.get_transport()) as scp:
+                scp.put(local_path, remote_path)
+                print(f"Uploaded {local_path} to {hostname}:{remote_path}")
+
+            # Close the SSH connection
+            ssh_client.close()
+        except Exception as e:
+            print(f"Error uploading file to {hostname}: {e}")
+
+    # Run the blocking upload operation in a separate thread
+    await asyncio.get_event_loop().run_in_executor(executor, upload_file)
+
+
+# Asynchronous function to handle the configuration file
+async def handle_config_file_async(instance):
+    """Handles downloading and uploading of the config file based on the config type (URL or local path)."""
+    config_path = instance["fmbench_config"]
+
+    # Check if the config path is a URL
+    if is_url(config_path):
+        print(f"Config is a URL. Downloading from {config_path}...")
+        local_config_path = await download_config_async(config_path)
+    else:
+        # It's a local file path, use it directly
+        local_config_path = config_path
+
+    # Define the remote path for the configuration file on the EC2 instance
+    remote_config_path = (
+        f"/home/{instance['username']}/{os.path.basename(local_config_path)}"
+    )
+
+    # Upload the configuration file to the EC2 instance
+    await upload_file_to_instance_async(
+        instance["hostname"],
+        instance["username"],
+        instance["key_file_path"],
+        local_config_path,
+        remote_config_path,
+    )
+
+    return remote_config_path
