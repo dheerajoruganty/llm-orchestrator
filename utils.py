@@ -470,7 +470,9 @@ def check_and_retrieve_results_folders(
                 )
 
 
-def generate_instance_details(instance_id_list, key_file_path, region="us-east-1"):
+def generate_instance_details(
+    instance_id_list, key_file_path, config_map, region="us-east-1"
+):
     """
     Generates a list of instance details dictionaries containing hostname, username, and key file path.
 
@@ -485,6 +487,11 @@ def generate_instance_details(instance_id_list, key_file_path, region="us-east-1
     instance_details = []
 
     for instance_id in instance_id_list:
+        config_entry = next((item for item in config_map if instance_id in item), None)
+
+        # If a config entry is found, get the config path
+        if config_entry:
+            config_path = config_entry[instance_id]
         # Get the public hostname and username for each instance
         public_hostname, username = get_ec2_hostname_and_username(
             instance_id, region, public_dns=True
@@ -497,6 +504,7 @@ def generate_instance_details(instance_id_list, key_file_path, region="us-east-1
                     "hostname": public_hostname,
                     "username": username,
                     "key_file_path": key_file_path,
+                    "config_file": config_path,
                 }
             )
         else:

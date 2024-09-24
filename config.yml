@@ -30,7 +30,7 @@ instances:
   - instance_type: g5.2xlarge
     ami_id: ami-05c3e698bd0cffe7e
     startup_script: startup_scripts/gpu_ubuntu_startup.txt
-    command_to_run: fmbench --config-file src/fmbench/configs/llama3/8b/config-ec2-llama3-8b.yml --local-mode yes --write-bucket placeholder --tmp-dir /tmp > fmbench.log 2>&1
+    fmbench_config: src/fmbench/configs/llama3/8b/config-ec2-llama3-8b.yml
   # - instance_type: t3.micro
   #   ami_id: ami-07f302d2a74e2b584
   #   startup_script: startup_scripts/az_linux2_startup.txt
