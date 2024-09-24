@@ -93,3 +93,4 @@ if __name__ == '__main__':
             )
             instance_id_list.append(instance_id)
             fmbench_config_map.append({instance_id: instance["fmbench_config"]})
+    
