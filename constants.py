@@ -7,7 +7,8 @@ AMI_USERNAME_MAP = {
     "ubuntu": "ubuntu",  # Ubuntu AMIs contain 'ubuntu' in their name
 }
 
-bash_script = """cd /home/ubuntu/foundation-model-benchmarking-tool;
+bash_script = """echo {hf_token} > /tmp/fmbench-read/scripts/hf_token.txt
+                cd /home/ubuntu/foundation-model-benchmarking-tool;
                 source activate fmbench_python311;
                  . ~/.bashrc;
                 if [[ "$CONDA_DEFAULT_ENV" == "fmbench_python311" ]]; then
