@@ -1,0 +1,406 @@
+endpoint_name,prompt,question,ground_truth,payload_file,do_sample,temperature,top_p,top_k,max_new_tokens,Content-type,return_full_text,completion,prompt_tokens,completion_tokens,latency,time_to_first_token,time_per_output_token,time_to_last_token,uuid,experiment_name,concurrency,instance_type,instance_count,EndpointName
+http://127.0.0.1:8080/invocations,"<|begin_of_text|><|start_header_id|>user<|end_header_id|>
+
+You are an assistant for question-answering tasks. Use the following pieces of retrieved context in the section demarcated by ""```"" to answer the question. 
+The context may contain multiple question answer pairs as an example. Only answer the final question provided in the question section below.
+If you dont know the answer just say that you dont know. Use three sentences maximum and keep the answer concise. 
+
+```
+Passage 1:
+Stauntonia
+Stauntonia is a genus of flowering plants in the family Lardizabalaceae. It is named after George Staunton, who brought it to Britain from China in the 19th century.
+
+Species
+Species accepted by the Plants of the World Online as of March 2023:
+Passage 2:
+Sinofranchetia
+Sinofranchetia is a genus of flowering plant in the Lardizabalaceae family. It contains a single species, Sinofranchetia chinensis, endemic to China.
+
+Description and ecology
+Sinofranchetia chinensis is a deciduous, woody climber. It occurs in dense forests along valleys, forest margins, among shrubs in south-central China.
+```
+
+Question: What family are the genus' Sinofranchetia and Stauntonia from? 
+
+Analyze the question carefully, and answer the question accurately with only the required information from the context. There can be multiple question answer pairs in the context. Answer the final question in the question section above after the context.
+
+<|eot_id|><|start_header_id|>assistant<|end_header_id|>",,,payload_en_1-500.jsonl,True,0.1,0.92,120,100,application/json,False,"{""code"":424,""message"":""Batch inference failed"",""properties"":{},""content"":{""keys"":[],""values"":[]},""cancelled"":false}",284,4,0.009894109000015305,,,,608a879848df49daa14296e813b47b5e,llama3-8b-instruct,1,g5.2xlarge,,http://127.0.0.1:8080/invocations
+http://127.0.0.1:8080/invocations,"<|begin_of_text|><|start_header_id|>user<|end_header_id|>
+
+You are an assistant for question-answering tasks. Use the following pieces of retrieved context in the section demarcated by ""```"" to answer the question. 
+The context may contain multiple question answer pairs as an example. Only answer the final question provided in the question section below.
+If you dont know the answer just say that you dont know. Use three sentences maximum and keep the answer concise. 
+
+```
+Passage 1:
+Stauntonia
+Stauntonia is a genus of flowering plants in the family Lardizabalaceae. It is named after George Staunton, who brought it to Britain from China in the 19th century.
+
+Species
+Species accepted by the Plants of the World Online as of March 2023:
+Passage 2:
+Sinofranchetia
+Sinofranchetia is a genus of flowering plant in the Lardizabalaceae family. It contains a single species, Sinofranchetia chinensis, endemic to China.
+
+Description and ecology
+Sinofranchetia chinensis is a deciduous, woody climber. It occurs in dense forests along valleys, forest margins, among shrubs in south-central China.
+```
+
+Question: What family are the genus' Sinofranchetia and Stauntonia from? 
+
+Analyze the question carefully, and answer the question accurately with only the required information from the context. There can be multiple question answer pairs in the context. Answer the final question in the question section above after the context.
+
+<|eot_id|><|start_header_id|>assistant<|end_header_id|>",,,payload_en_1-500.jsonl,True,0.1,0.92,120,100,application/json,False,"{""generated_text"": ""\n\n```Stauntonia is a genus of flowering plants in the family Lardizabalaceae. It is named after George Staunton, who brought it to Britain from China in the 19th century.\n\nSpecies\nSpecies accepted by the Plants of the World Online as of March 2023:\nSinofranchetia\nSinofranchetia is a genus of flowering plant in the Lardizabalaceae family. It contains a single species, Sinofr""}",284,76,3.7248972339998545,,,,171e223aabfb4d66a89ba270eeb72c17,llama3-8b-instruct,1,g5.2xlarge,,http://127.0.0.1:8080/invocations
+http://127.0.0.1:8080/invocations,"<|begin_of_text|><|start_header_id|>user<|end_header_id|>
+
+You are an assistant for question-answering tasks. Use the following pieces of retrieved context in the section demarcated by ""```"" to answer the question. 
+The context may contain multiple question answer pairs as an example. Only answer the final question provided in the question section below.
+If you dont know the answer just say that you dont know. Use three sentences maximum and keep the answer concise. 
+
+```
+Passage 1:
+Stauntonia
+Stauntonia is a genus of flowering plants in the family Lardizabalaceae. It is named after George Staunton, who brought it to Britain from China in the 19th century.
+
+Species
+Species accepted by the Plants of the World Online as of March 2023:
+Passage 2:
+Sinofranchetia
+Sinofranchetia is a genus of flowering plant in the Lardizabalaceae family. It contains a single species, Sinofranchetia chinensis, endemic to China.
+
+Description and ecology
+Sinofranchetia chinensis is a deciduous, woody climber. It occurs in dense forests along valleys, forest margins, among shrubs in south-central China.
+```
+
+Question: What family are the genus' Sinofranchetia and Stauntonia from? 
+
+Analyze the question carefully, and answer the question accurately with only the required information from the context. There can be multiple question answer pairs in the context. Answer the final question in the question section above after the context.
+
+<|eot_id|><|start_header_id|>assistant<|end_header_id|>",,,payload_en_1-500.jsonl,True,0.1,0.92,120,100,application/json,False,"{""generated_text"": ""\n\n```Stauntonia is a genus of flowering plants in the family Lardizabalaceae. It is named after George Staunton, who brought it to Britain from China in the 19th century.\n\nSpecies\nSpecies accepted by the Plants of the World Online as of March 2023:\nSinofranchetia\nSinofranchetia is a genus of flowering plant in the Lardizabalaceae family. It contains a single species, Sinofr""}",284,76,3.6894731360000605,,,,228c54dd156649fd9a633094fef9f42d,llama3-8b-instruct,1,g5.2xlarge,,http://127.0.0.1:8080/invocations
+http://127.0.0.1:8080/invocations,"<|begin_of_text|><|start_header_id|>user<|end_header_id|>
+
+You are an assistant for question-answering tasks. Use the following pieces of retrieved context in the section demarcated by ""```"" to answer the question. 
+The context may contain multiple question answer pairs as an example. Only answer the final question provided in the question section below.
+If you dont know the answer just say that you dont know. Use three sentences maximum and keep the answer concise. 
+
+```
+Passage 1:
+Stauntonia
+Stauntonia is a genus of flowering plants in the family Lardizabalaceae. It is named after George Staunton, who brought it to Britain from China in the 19th century.
+
+Species
+Species accepted by the Plants of the World Online as of March 2023:
+Passage 2:
+Sinofranchetia
+Sinofranchetia is a genus of flowering plant in the Lardizabalaceae family. It contains a single species, Sinofranchetia chinensis, endemic to China.
+
+Description and ecology
+Sinofranchetia chinensis is a deciduous, woody climber. It occurs in dense forests along valleys, forest margins, among shrubs in south-central China.
+```
+
+Question: What family are the genus' Sinofranchetia and Stauntonia from? 
+
+Analyze the question carefully, and answer the question accurately with only the required information from the context. There can be multiple question answer pairs in the context. Answer the final question in the question section above after the context.
+
+<|eot_id|><|start_header_id|>assistant<|end_header_id|>",,,payload_en_1-500.jsonl,True,0.1,0.92,120,100,application/json,False,"{""generated_text"": ""\n\n```Stauntonia is a genus of flowering plants in the family Lardizabalaceae. It is named after George Staunton, who brought it to Britain from China in the 19th century.\n\nSpecies\nSpecies accepted by the Plants of the World Online as of March 2023:\nSinofranchetia\nSinofranchetia is a genus of flowering plant in the Lardizabalaceae family. It contains a single species, Sinofr""}",284,76,3.689735810000002,,,,2b5733f0977245c0a9e677fc3071567a,llama3-8b-instruct,1,g5.2xlarge,,http://127.0.0.1:8080/invocations
+http://127.0.0.1:8080/invocations,"<|begin_of_text|><|start_header_id|>user<|end_header_id|>
+
+You are an assistant for question-answering tasks. Use the following pieces of retrieved context in the section demarcated by ""```"" to answer the question. 
+The context may contain multiple question answer pairs as an example. Only answer the final question provided in the question section below.
+If you dont know the answer just say that you dont know. Use three sentences maximum and keep the answer concise. 
+
+```
+Passage 1:
+Stauntonia
+Stauntonia is a genus of flowering plants in the family Lardizabalaceae. It is named after George Staunton, who brought it to Britain from China in the 19th century.
+
+Species
+Species accepted by the Plants of the World Online as of March 2023:
+Passage 2:
+Sinofranchetia
+Sinofranchetia is a genus of flowering plant in the Lardizabalaceae family. It contains a single species, Sinofranchetia chinensis, endemic to China.
+
+Description and ecology
+Sinofranchetia chinensis is a deciduous, woody climber. It occurs in dense forests along valleys, forest margins, among shrubs in south-central China.
+```
+
+Question: What family are the genus' Sinofranchetia and Stauntonia from? 
+
+Analyze the question carefully, and answer the question accurately with only the required information from the context. There can be multiple question answer pairs in the context. Answer the final question in the question section above after the context.
+
+<|eot_id|><|start_header_id|>assistant<|end_header_id|>",,,payload_en_1-500.jsonl,True,0.1,0.92,120,100,application/json,False,"{""generated_text"": ""\n\n```Stauntonia is a genus of flowering plants in the family Lardizabalaceae. It is named after George Staunton, who brought it to Britain from China in the 19th century.\n\nSpecies\nSpecies accepted by the Plants of the World Online as of March 2023:\nSinofranchetia\nSinofranchetia is a genus of flowering plant in the Lardizabalaceae family. It contains a single species, Sinofr""}",284,76,3.6854669109998213,,,,07197582649b4e44944d029f2db36e2c,llama3-8b-instruct,1,g5.2xlarge,,http://127.0.0.1:8080/invocations
+http://127.0.0.1:8080/invocations,"<|begin_of_text|><|start_header_id|>user<|end_header_id|>
+
+You are an assistant for question-answering tasks. Use the following pieces of retrieved context in the section demarcated by ""```"" to answer the question. 
+The context may contain multiple question answer pairs as an example. Only answer the final question provided in the question section below.
+If you dont know the answer just say that you dont know. Use three sentences maximum and keep the answer concise. 
+
+```
+Passage 1:
+WAGS Atlanta
+WAGS Atlanta was an American reality television show that premiered on the E! cable network on January 3, 2018 as a spin-off of WAGS. The reality show chronicled  the  lives of several WAGs (an acronym for ""wives and girlfriends"" of high-profile athletes)  in Atlanta, Georgia. The show was confirmed canceled in January 2019.
+
+Production
+The series was announced by E! on May 4, 2017. The series is the second spin-off of WAGS. The show is set in Atlanta and will document the personal and professional lives of a group of WAGs. WAGS Atlanta premiered on January 3, 2018.
+
+Cast
+Brandi Rhodes, wife of Cody Rhodes
+Hope Wiseman
+Kaylin Jurrjens, wife of Jair Jurrjens
+Kesha Norman, girlfriend of C. J. Mosley
+Kierra Douglas, wife of Harry Douglas
+Niche Caldwell, wife of Andre Caldwell
+Sincerely Ward, cousin of Derrick Ward
+Shuntel ""Telli"" Swift, fiance of Deontay Wilder
+
+Episodes
+See also
+WAGS (TV series)
+WAGs Boutique
+WAGS Miami
+WAG Nation
+Passage 2:
+WAGS (TV series)
+WAGS, also known as WAGS LA, is a 2015-2017 American reality documentary television series that ran for three seasons on the E! television network. The reality show chronicles both the professional and personal lives of several WAGs (an acronym for wives and girlfriends of sportspersons).The series had three spin-off shows, all on the E! network: WAGS Miami (2016-2017), which ran for two seasons, WAGS Atlanta (2018), which ran for one season, and Relatively Nat & Liv (2019), starring Olivia Pierson and Natalie Halcro of WAGS LA, which ran for one season.
+
+Cast
+Episodes
+Series overview
+Season 1 (2015)
+Season 2 (2016)
+Sophia Pierson and Tia Shipman joined the cast of WAGs; North departed as a series regular.
+
+Season 3 (2017)
+Michelle Beltran, Amber Miller, and Dominique Penn joined the cast of WAGs; Pierson and Shipman departed as series regulars.
+
+Broadcast
+The eight-episode series premiered at 10:00PM ET in the United States on the E! cable network and airs weekly starting on August 18, 2015. The series has aired internationally, in Australia and New Zealand, the series premiered on the local version of E! on August 20, 2015.
+
+Spin-offs
+In May 2016, it was announced that WAGS would receive a spin-off, titled WAGS Miami. The series features wives and girlfriends of sports stars centered in Miami. The series premiered on October 2, 2016. On May 4, 2017, it was announced that a second spin-off, WAGS Atlanta, was in development with James DuBose serving as executive producer of the series.
+
+Cancellation
+On February 1, 2018, E! executives announced that WAGS LA and WAGS Miami were cancelled because of declining ratings.
+
+See also
+WAGS Atlanta
+WAGs Boutique
+WAGS Miami
+WAG Nation
+```
+
+Question: Both WAGS Atlanta and WAGS are what? 
+
+Analyze the question carefully, and answer the question accurately with only the required information from the context. There can be multiple question answer pairs in the context. Answer the final question in the question section above after the context.
+
+<|eot_id|><|start_header_id|>assistant<|end_header_id|>",,,payload_en_500-1000.jsonl,True,0.1,0.92,120,100,application/json,False,"{""generated_text"": ""\n\nAccording to the context, both WAGS Atlanta and WAGS are reality television shows that chronicle the lives of WAGs (wives and girlfriends of high-profile athletes).""}",750,35,1.5683686320001016,,,,bcc8eb1e223c45d1a8a72636fbced1f6,llama3-8b-instruct,1,g5.2xlarge,,http://127.0.0.1:8080/invocations
+http://127.0.0.1:8080/invocations,"<|begin_of_text|><|start_header_id|>user<|end_header_id|>
+
+You are an assistant for question-answering tasks. Use the following pieces of retrieved context in the section demarcated by ""```"" to answer the question. 
+The context may contain multiple question answer pairs as an example. Only answer the final question provided in the question section below.
+If you dont know the answer just say that you dont know. Use three sentences maximum and keep the answer concise. 
+
+```
+Passage 1:
+Dameh
+Dameh (Persian: دمه) is a village in Qaleh-ye Khvajeh Rural District, in the Central District of Andika County, Khuzestan Province, Iran. At the 2006 census, its population was 87, in 12 families.
+Passage 2:
+Rhosgoch
+Rhosgoch (Welsh pronunciation; meaning: Red Moor) is a small village in the north of the island of Anglesey, Wales, about 3.5 miles (5.6 km) to the south-west of Amlwch. It is in the community of Rhosybol.
+A short distance to the west of the village is the small lake Llyn Hafodol and a mile to the south is Anglesey's largest body of water the reservoir Llyn Alaw (Water Lily Lake).The village once had a station on the Anglesey Central Railway. Although the tracks still exist, no train has run on them since 1993. Also connected to the railway, was a short south-west facing spur that led to an oil terminal. This was linked to a floating dock in the sea off of Amlwch, where super-tankers could dock in all tides and feed oil via Rhosgoch and a pipeline to Stanlow oil refinery. This operation lasted for 16 years between 1974 and 1990.The first tornado of the record-breaking 1981 United Kingdom tornado outbreak, an F1/T2 tornado, touched down close to Rhosgoch at around 10:19 local time on 23 November 1981.
+Passage 3:
+Khosrow, Andika
+Khosrow (Persian: خسرو) is a village in Qaleh-ye Khvajeh Rural District, in the Central District of Andika County, Khuzestan Province, Iran. At the 2006 census, its population was 70, in 13 families.
+Passage 4:
+Qaleh-ye Sahar
+Qaleh-ye Sahar (Persian: قلعه سحر, also Romanized as Qal‘eh-ye Saḩar and Qal‘eh Sahar; also known as Qal‘eh-ye Saḩar Alhā’ī) is a village in Elhayi Rural District, in the Central District of Ahvaz County, Khuzestan Province, Iran. At the 2006 census, its population was 801, in 129 families.
+Passage 5:
+Qaleh-ye Askar
+Qaleh-ye Askar or Qaleh Askar (Persian: قلعه عسكر), also rendered as Qaleh-ye Asgar and Qaleh Asgar may refer to:
+
+Qaleh-ye Askar, Bam
+Qaleh Askar, Bardsir
+Qaleh Asgar Rural District
+Passage 6:
+Gohar, Iran
+Gohar (Persian: گهر) is a village in Qaleh-ye Khvajeh Rural District, in the Central District of Andika County, Khuzestan Province, Iran. At the 2006 census, its population was 85, in 11 families.
+Passage 7:
+Qaleh-ye Zaras
+Qaleh-ye Zaras (Persian: قلعه زراس, also Romanized as Qal‘eh-ye Zarās, Qal‘eh Zarās, and Qal‘eh Zarrās; also known as Ghal’eh Zaras) is a village in Qaleh-ye Khvajeh Rural District, in the Central District of Andika County, Khuzestan Province, Iran. At the 2006 census, its population was 291, in 49 families.
+Passage 8:
+Qaleh-ye Pain
+Qaleh-ye Pain (Persian: قلعه پائين) may refer to:
+
+Qaleh-ye Pain, Bavanat
+Qaleh-ye Pain, Marvdasht
+Qaleh-ye Pain Baram
+Qaleh-ye Pain Deh Shah
+Passage 9:
+Qaleh-ye Bakhtiar
+Qaleh-ye Bakhtiar or Qaleh-ye Bakhteyar (Persian: قلعه بختيار) may refer to:
+
+Qaleh-ye Bakhtiar, Chaharmahal and Bakhtiari
+Qaleh-ye Bakhtiar, Hamadan
+Passage 10:
+Qaleh-ye Nashin Shahi
+Qaleh-ye Nashin Shahi (Persian: قلعه نشين شاهي, also Romanized as Qalʿeh Nashīn Shāhī; also known as Qaleh-ye Shinshahi) is a village in Shurab Rural District, Veysian District, Dowreh County, Lorestan Province, Iran. At the 2006 census, its population was 72, in 14 families.
+```
+
+Question: Are both villages, Rhosgoch and Qaleh-Ye Sahar, located in the same country? 
+
+Analyze the question carefully, and answer the question accurately with only the required information from the context. There can be multiple question answer pairs in the context. Answer the final question in the question section above after the context.
+
+<|eot_id|><|start_header_id|>assistant<|end_header_id|>",,,payload_en_500-1000.jsonl,True,0.1,0.92,120,100,application/json,False,"{""generated_text"": ""\n\nI don't know.""}",860,6,0.5229072229999474,,,,d9c1cff57c9e4b1b9fbf1cb5179ccb9c,llama3-8b-instruct,1,g5.2xlarge,,http://127.0.0.1:8080/invocations
+http://127.0.0.1:8080/invocations,"<|begin_of_text|><|start_header_id|>user<|end_header_id|>
+
+You are an assistant for question-answering tasks. Use the following pieces of retrieved context in the section demarcated by ""```"" to answer the question. 
+The context may contain multiple question answer pairs as an example. Only answer the final question provided in the question section below.
+If you dont know the answer just say that you dont know. Use three sentences maximum and keep the answer concise. 
+
+```
+Passage 1:
+Gepiș
+The Gepiș is a right tributary of the river Crișul Repede in Romania. It discharges into the Crișul Repede in Groși. Its length is 9 km (5.6 mi) and its basin size is 23 km2 (8.9 sq mi).
+Passage 2:
+Valea Satului (Crișul Alb)
+The Valea Satului is a left tributary of the river Crișul Alb in Romania. It flows into the Crișul Alb near Buceș. Its length is 18 km (11 mi) and its basin size is 105 km2 (41 sq mi).
+Passage 3:
+Chisindia (river)
+The Chisindia is a left tributary of the river Crișul Alb in Romania. It discharges into the Crișul Alb near Berindia. Its length is 21 km (13 mi) and its basin size is 102 km2 (39 sq mi).
+Passage 4:
+Potoc
+The Potoc is a left tributary of the river Crișul Alb in Romania. It flows into the Crișul Alb near Bocsig. Its length is 12 km (7.5 mi) and its basin size is 29 km2 (11 sq mi). Part of its flow is diverted into the Canalul Morilor, which flows parallel to the south of the Crișul Alb.
+Passage 5:
+Bodești (river)
+The Bodești is a left tributary of the river Crișul Alb in Romania. It discharges into the Crișul Alb near Pescari. Its length is 16 km (9.9 mi) and its basin size is 33 km2 (13 sq mi).
+Passage 6:
+Canalul Morilor
+The Canalul Morilor is a canal in the lowland area south of the river Crișul Alb in Arad County, western Romania. Constructed in the 19th century for water-mills, it is now used for irrigation. It takes water from the Crișul Alb near Berindia, flows more or less parallel to the Crișul Alb towards the west and discharges into the Crișul Alb in Vărșand. It is 92 km (57 mi) long. It passes through the communes Buteni, Bârsa, Bocsig, Ineu, Seleuș, Zărand, Olari, Chișineu-Criș, Socodor and Pilu. It intercepts several former left tributaries of the Crișul Alb, including Chișer, Rât and Budieru.
+Passage 7:
+Gut (Crișul Alb)
+The Gut (also: Condratău) is a left tributary of the river Crișul Alb in Romania. It discharges into the Crișul Alb near Șicula. Its length is 23 km (14 mi) and its basin size is 75 km2 (29 sq mi).
+Passage 8:
+Cleceova
+The Cleceova is a left tributary of the river Crișul Alb in Romania. It flows into the Crișul Alb near Buteni. Its length is 13 km (8.1 mi) and its basin size is 21 km2 (8.1 sq mi). Most of its flow is diverted into the Canalul Morilor, which flows parallel to the south of the Crișul Alb.
+Passage 9:
+Hodiș (river)
+The Hodiș is a left tributary of the river Crișul Alb in Romania. It flows into the Crișul Alb near Bârsa. Its length is 16 km (9.9 mi) and its basin size is 48 km2 (19 sq mi). Part of its flow is diverted into the Canalul Morilor, which flows parallel to the south of the Crișul Alb.
+Passage 10:
+Brad (Crișul Alb)
+The Brad is a right tributary of the river Crișul Alb in Romania. It discharges into the Crișul Alb in the city Brad. Its length is 12 km (7.5 mi) and its basin size is 28 km2 (11 sq mi).
+```
+
+Question: Are Gut (Crișul Alb) and Gepiș both located in the same country? 
+
+Analyze the question carefully, and answer the question accurately with only the required information from the context. There can be multiple question answer pairs in the context. Answer the final question in the question section above after the context.
+
+<|eot_id|><|start_header_id|>assistant<|end_header_id|>",,,payload_en_500-1000.jsonl,True,0.1,0.92,120,100,application/json,False,"{""generated_text"": ""\n\nI've analyzed the question and found the relevant information. According to the context, both Gut (Crișul Alb) and Gepiș are located in Romania. Therefore, the answer is:\n\nYes, Gut (Crișul Alb) and Gepiș are both located in the same country, Romania.""}",896,55,2.6348303789998226,,,,5ecc853ff3ed4195859aa11bd8509506,llama3-8b-instruct,1,g5.2xlarge,,http://127.0.0.1:8080/invocations
+http://127.0.0.1:8080/invocations,"<|begin_of_text|><|start_header_id|>user<|end_header_id|>
+
+You are an assistant for question-answering tasks. Use the following pieces of retrieved context in the section demarcated by ""```"" to answer the question. 
+The context may contain multiple question answer pairs as an example. Only answer the final question provided in the question section below.
+If you dont know the answer just say that you dont know. Use three sentences maximum and keep the answer concise. 
+
+```
+Passage 1:
+Puka Rumi
+Puka Rumi (Quechua puka red, rumi stone, ""red stone"", Hispanicized spelling Pucarumi) is a 5,000-metre-high (16,404 ft) mountain in the northern part of the Chunta mountain range in the Andes of Peru. It is situated in the Huancavelica Region, Huancavelica Province, Acobambilla District, and in the Junín Region, Huancayo Province, Chongos Alto District. Puka Rumi lies southeast of Ñawinqucha.
+Passage 2:
+Yana Urqu (Q'umirqucha)
+Yana Urqu (Quechua yana black, urqu mountain, ""black mountain"", Hispanicized spelling Yanaorjo) is a mountain in the Andes of Peru, about 4,800 metres (15,748 ft) high. It is situated in the Cusco Region, Quispicanchi Province, Marcapata District. It lies southwest of Wanakuni and west of a little lake named Q'umirqucha.
+Passage 3:
+Yana Urqu (Mizque)
+Yana Urqu (Quechua yana black, urqu mountain, ""black mountain"", also spelled Yana Orkho) is a 3,572-metre-high (11,719 ft) mountain in the Bolivian Andes. It is located in the Cochabamba Department, Mizque Province, Mizque Municipality. The Yana Urqu Mayu (""black mountain river"") originates northwest of the mountain. Its waters flow to the Mizque River.
+Passage 4:
+Yana Urqu (Yayamari)
+Yana Urqu (Quechua yana black, urqu mountain, ""black mountain"", Hispanicized spelling Yanaorjo) is a mountain in the Willkanuta mountain range in the Andes of Peru, about 5,000 metres (16,404 ft) high. It is situated in the Cusco Region, Quispicanchi Province, Marcapata District. Yana Urqu lies southwest of the mountain Q'illu Wallayuq and northeast of Yayamari.
+Passage 5:
+Yana Urqu (Lima)
+Yana Urqu (Quechua yana black, urqu mountain, ""black mountain"", also spelled Yana Orco) is mountain in the Cordillera Central in the Andes of Peru which reaches a height of approximately  4,800 metres (15,748 ft). It is located in the Lima Region, Yauyos Province,  Laraos District. Yana Urqu lies northwest of Uchku and a lake named Pumaqucha.
+Passage 6:
+Yana Urqu (Jaqhichuwa)
+Yana Urqu (Quechua yana black, urqu mountain, ""black mountain"", Hispanicized spelling Yanaorjo) is a mountain in the Willkanuta mountain range in the Andes of Peru, about 4,800 metres (15,748 ft) high. It is situated in the Cusco Region, Quispicanchi Province, Marcapata District. Yana Urqu lies southeast of the mountain Jaqhichuwa.
+Passage 7:
+Yana Urqu (Castrovirreyna)
+Yana Urqu (Quechua yana black, urqu mountain, ""black mountain"", Hispanicized spelling Yana Orjo) is a mountain in the Chunta mountain range in the Andes of Peru, about 5,000 metres (16,404 ft) high. It is located in the Huancavelica Region, Castrovirreyna Province, Santa Ana District. Yana Urqu lies south of Wayra Q'asa.
+Passage 8:
+Yana Urqu (Apurímac)
+Yana Urqu (Quechua yana black, urqu mountain, ""black mountain"", hispanicized spelling Yanaorjo) is a mountain in the north of the Wansu mountain range in the Andes of Peru, about 5,000 m (16,404 ft) high. It is situated in the Apurímac Region, Antabamba Province, Oropesa District. Yana Urqu lies southwest of Willkarana and Kisu Qutu.
+Passage 9:
+Yana Urqu (Chapi Urqu)
+Yana Urqu (Quechua yana black, urqu mountain, ""black mountain"", Hispanicized spelling Yanaorcco) is a 4,890-metre-high (16,040 ft) mountain in the Andes of Peru. It is located in the Huancavelica Region, Huancavelica Province, Huacocolpa District. Yana Urqu lies southeast of Chapi Urqu and northeast of Inqhana.
+Passage 10:
+Yana Urqu (Huancavelica)
+Yana Urqu (Quechua yana black, urqu mountain, ""black mountain"", hispanicized spelling Yana Orjo) is a mountain in the Chunta mountain range in the Andes of Peru, about 5,000 metres (16,404 ft) high. It is located in the Huancavelica Region, Huancavelica Province, Huacocolpa District. Yana Urqu lies northwest of Inqhana and northeast of Wayra Q'asa.
+```
+
+Question: Are both mountains, Yana Urqu (Q'Umirqucha) and Puka Rumi, located in the same country? 
+
+Analyze the question carefully, and answer the question accurately with only the required information from the context. There can be multiple question answer pairs in the context. Answer the final question in the question section above after the context.
+
+<|eot_id|><|start_header_id|>assistant<|end_header_id|>",,,payload_en_500-1000.jsonl,True,0.1,0.92,120,100,application/json,False,"{""generated_text"": ""\n\nI've analyzed the context and found the relevant information. According to Passage 1, Puka Rumi is located in Peru. According to Passage 2, Yana Urqu (Q'umirqucha) is also located in Peru. Therefore, both mountains are located in the same country, Peru.""}",936,56,2.6619064839999282,,,,946772149bff41058b15ca91e8f02b63,llama3-8b-instruct,1,g5.2xlarge,,http://127.0.0.1:8080/invocations
+http://127.0.0.1:8080/invocations,"<|begin_of_text|><|start_header_id|>user<|end_header_id|>
+
+You are an assistant for question-answering tasks. Use the following pieces of retrieved context in the section demarcated by ""```"" to answer the question. 
+The context may contain multiple question answer pairs as an example. Only answer the final question provided in the question section below.
+If you dont know the answer just say that you dont know. Use three sentences maximum and keep the answer concise. 
+
+```
+Passage 1:
+WAGS Atlanta
+WAGS Atlanta was an American reality television show that premiered on the E! cable network on January 3, 2018 as a spin-off of WAGS. The reality show chronicled  the  lives of several WAGs (an acronym for ""wives and girlfriends"" of high-profile athletes)  in Atlanta, Georgia. The show was confirmed canceled in January 2019.
+
+Production
+The series was announced by E! on May 4, 2017. The series is the second spin-off of WAGS. The show is set in Atlanta and will document the personal and professional lives of a group of WAGs. WAGS Atlanta premiered on January 3, 2018.
+
+Cast
+Brandi Rhodes, wife of Cody Rhodes
+Hope Wiseman
+Kaylin Jurrjens, wife of Jair Jurrjens
+Kesha Norman, girlfriend of C. J. Mosley
+Kierra Douglas, wife of Harry Douglas
+Niche Caldwell, wife of Andre Caldwell
+Sincerely Ward, cousin of Derrick Ward
+Shuntel ""Telli"" Swift, fiance of Deontay Wilder
+
+Episodes
+See also
+WAGS (TV series)
+WAGs Boutique
+WAGS Miami
+WAG Nation
+Passage 2:
+WAGS (TV series)
+WAGS, also known as WAGS LA, is a 2015-2017 American reality documentary television series that ran for three seasons on the E! television network. The reality show chronicles both the professional and personal lives of several WAGs (an acronym for wives and girlfriends of sportspersons).The series had three spin-off shows, all on the E! network: WAGS Miami (2016-2017), which ran for two seasons, WAGS Atlanta (2018), which ran for one season, and Relatively Nat & Liv (2019), starring Olivia Pierson and Natalie Halcro of WAGS LA, which ran for one season.
+
+Cast
+Episodes
+Series overview
+Season 1 (2015)
+Season 2 (2016)
+Sophia Pierson and Tia Shipman joined the cast of WAGs; North departed as a series regular.
+
+Season 3 (2017)
+Michelle Beltran, Amber Miller, and Dominique Penn joined the cast of WAGs; Pierson and Shipman departed as series regulars.
+
+Broadcast
+The eight-episode series premiered at 10:00PM ET in the United States on the E! cable network and airs weekly starting on August 18, 2015. The series has aired internationally, in Australia and New Zealand, the series premiered on the local version of E! on August 20, 2015.
+
+Spin-offs
+In May 2016, it was announced that WAGS would receive a spin-off, titled WAGS Miami. The series features wives and girlfriends of sports stars centered in Miami. The series premiered on October 2, 2016. On May 4, 2017, it was announced that a second spin-off, WAGS Atlanta, was in development with James DuBose serving as executive producer of the series.
+
+Cancellation
+On February 1, 2018, E! executives announced that WAGS LA and WAGS Miami were cancelled because of declining ratings.
+
+See also
+WAGS Atlanta
+WAGs Boutique
+WAGS Miami
+WAG Nation
+```
+
+Question: Both WAGS Atlanta and WAGS are what? 
+
+Analyze the question carefully, and answer the question accurately with only the required information from the context. There can be multiple question answer pairs in the context. Answer the final question in the question section above after the context.
+
+<|eot_id|><|start_header_id|>assistant<|end_header_id|>",,,payload_en_500-1000.jsonl,True,0.1,0.92,120,100,application/json,False,"{""generated_text"": ""\n\nAccording to the context, both WAGS Atlanta and WAGS are reality television shows that chronicle the lives of WAGs (wives and girlfriends of high-profile athletes).""}",750,35,1.5642580850001195,,,,55f157b8610544cb94f13ceda6744f82,llama3-8b-instruct,1,g5.2xlarge,,http://127.0.0.1:8080/invocations

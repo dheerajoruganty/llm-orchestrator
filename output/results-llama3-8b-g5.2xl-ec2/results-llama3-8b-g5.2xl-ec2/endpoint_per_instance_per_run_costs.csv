@@ -1,0 +1,2 @@
+experiment_name,instance_type,instance_count,duration_in_seconds,cost
+llama3-8b-instruct,g5.2xlarge,,23.81,0.008017

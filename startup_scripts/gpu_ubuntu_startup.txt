@@ -41,6 +41,6 @@ echo 'source /home/ubuntu/miniconda3/bin/activate fmbench_python311' >> /home/ub
 echo 'cd /home/ubuntu/foundation-model-benchmarking-tool' >> /home/ubuntu/.bashrc
 
 source /home/ubuntu/.bashrc
-touch done.bat
+touch /tmp/startup_complete.flag
 EOF
 

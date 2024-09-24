@@ -1,0 +1,3 @@
+experiment_name,payload_file,instance_type,instance_count,concurrency,count
+llama3-8b-instruct,payload_en_1-500.jsonl,g5.2xlarge,1.0,1,5
+llama3-8b-instruct,payload_en_500-1000.jsonl,g5.2xlarge,1.0,1,5

@@ -1,3 +1,4 @@
+import os
 import time
 import json
 import yaml
@@ -439,35 +440,40 @@ def get_folder_from_instance(
 
 
 # Main function to check and retrieve 'results-*' folders from multiple instances
-def check_and_retrieve_results_folders(
-    instance_details, key_file_path, local_folder_base
-):
+def check_and_retrieve_results_folder(instance, local_folder_base):
     """
-    Checks for 'results-*' folders on multiple EC2 instances and retrieves them if found.
+    Checks for 'results-*' folders on a single EC2 instance and retrieves them if found.
 
     Args:
-        instance_details (list): List of dictionaries containing instance details (hostname, username).
+        instance (dict): Dictionary containing instance details (hostname, username, instance_id).
         key_file_path (str): The path to the PEM key file.
         local_folder_base (str): The local base path where the folders should be saved.
 
     Returns:
         None
     """
-    for instance in instance_details:
-        hostname = instance["hostname"]
-        username = instance["username"]
+    hostname = instance["hostname"]
+    username = instance["username"]
+    key_file_path = instance["key_file_path"]
 
-        # Check for 'results-*' folders in the root directory
-        results_folders = check_for_results_folder(hostname, username, key_file_path)
+    # Check for 'results-*' folders in the specified directory
+    results_folders = check_for_results_folder(hostname, username, key_file_path)
 
-        # If any folders are found, retrieve them
-        for folder in results_folders:
-            if folder:  # Check if folder name is not empty
-                local_folder = f"{local_folder_base}/{hostname}/{folder.split('/')[-1]}"
-                print(f"Retrieving folder '{folder}' from {hostname}...")
-                get_folder_from_instance(
-                    hostname, username, key_file_path, folder, local_folder
-                )
+    # If any folders are found, retrieve them
+    for folder in results_folders:
+        if folder:  # Check if folder name is not empty
+            # Create a local folder path for this instance
+            local_folder = os.path.join(local_folder_base, os.path.basename(folder))
+            os.makedirs(
+                local_folder, exist_ok=True
+            )  # Create local directory if it doesn't exist
+
+            print(
+                f"Retrieving folder '{folder}' from {hostname} to '{local_folder}'..."
+            )
+            get_folder_from_instance(
+                hostname, username, key_file_path, folder, local_folder
+            )
 
 
 def generate_instance_details(
@@ -573,3 +579,67 @@ def run_command_on_instances(instance_details, key_file_path, command):
             results[hostname] = {"stdout": "", "stderr": str(e), "exit_status": -1}
 
     return results
+
+
+def upload_and_execute_script_invoke_shell(
+    hostname, username, key_file_path, script_content, remote_script_path
+):
+    """
+    Uploads a bash script to the EC2 instance and executes it via an interactive SSH shell.
+
+    Args:
+        hostname (str): The public IP or DNS of the EC2 instance.
+        username (str): The SSH username (e.g., 'ubuntu').
+        key_file_path (str): The path to the PEM key file.
+        script_content (str): The content of the bash script to upload.
+        remote_script_path (str): The remote path where the script should be saved on the instance.
+
+    Returns:
+        str: The output of the executed script.
+    """
+    try:
+        # Initialize the SSH client
+        ssh_client = paramiko.SSHClient()
+        ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+
+        # Load the private key
+        private_key = paramiko.RSAKey.from_private_key_file(key_file_path)
+
+        # Connect to the instance
+        ssh_client.connect(hostname, username=username, pkey=private_key)
+        print(f"Connected to {hostname} as {username}")
+
+        # Open SFTP session to upload the script
+        sftp = ssh_client.open_sftp()
+        with sftp.open(remote_script_path, "w") as remote_file:
+            remote_file.write(script_content)
+        sftp.close()
+        print(f"Script uploaded to {remote_script_path}")
+
+        # Open an interactive shell session
+        shell = ssh_client.invoke_shell()
+        time.sleep(1)  # Give the shell some time to initialize
+
+        # Send the commands to the shell
+        shell.send(f"chmod +x {remote_script_path}\n")  # Make the script executable
+        time.sleep(1)  # Wait for the command to complete
+
+        # Execute the script
+        shell.send(f"bash -l -c '{remote_script_path}'\n")
+        time.sleep(1)  # Wait for the command to complete
+
+        # Read the output of the script
+        output = ""
+        while shell.recv_ready():
+            output += shell.recv(1024).decode("utf-8")
+            time.sleep(2)  # Allow time for the command output to be captured
+
+        # Close the shell and connection
+        shell.close()
+        ssh_client.close()
+
+        return output
+
+    except Exception as e:
+        print(f"Error connecting via SSH to {hostname}: {e}")
+        return None
