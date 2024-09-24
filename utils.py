@@ -1,15 +1,23 @@
 import os
 import time
-import wget
 import json
+import wget
 import yaml
 import boto3
 import base64
+import urllib
 import logging
+import asyncio
 import paramiko
-import urllib.parse
+from utils import *
+from constants import *
 from scp import SCPClient
+from collections import defaultdict
+from concurrent.futures import ThreadPoolExecutor
 from botocore.exceptions import NoCredentialsError, ClientError
+
+executor = ThreadPoolExecutor()
+
 
 # Define a dictionary for common AMIs and their corresponding usernames
 AMI_USERNAME_MAP = {
@@ -701,7 +709,7 @@ async def upload_file_to_instance_async(
 # Asynchronous function to handle the configuration file
 async def handle_config_file_async(instance):
     """Handles downloading and uploading of the config file based on the config type (URL or local path)."""
-    config_path = instance["fmbench_config"]
+    config_path = instance["config_file"]
 
     # Check if the config path is a URL
     if is_url(config_path):
