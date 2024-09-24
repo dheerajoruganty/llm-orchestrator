@@ -34,7 +34,7 @@ newgrp docker
 curl -s https://raw.githubusercontent.com/aws-samples/foundation-model-benchmarking-tool/main/copy_s3_content.sh | sh -s -- /tmp
 
 # Save the token
-echo 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 > /tmp/fmbench-read/scripts/hf_token.txt
+echo {hf_token} > /tmp/fmbench-read/scripts/hf_token.txt
 
 # Add the conda environment activation and directory navigation to .bashrc
 echo 'source /home/ubuntu/miniconda3/bin/activate fmbench_python311' >> /home/ubuntu/.bashrc
