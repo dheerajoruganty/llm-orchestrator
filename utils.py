@@ -26,6 +26,25 @@ AMI_USERNAME_MAP = {
 }
 
 
+def load_yaml_file(file_path):
+    """
+    Load and parse a YAML file.
+
+    Args:
+        file_path (str): The path to the YAML file to be read.
+
+    Returns:
+        dict: Parsed content of the YAML file as a dictionary.
+    """
+    with open(file_path, "r") as file:
+        try:
+            data = yaml.safe_load(file)
+            return data
+        except yaml.YAMLError as error:
+            print(f"Error reading the YAML file: {error}")
+            return None
+
+
 def get_security_group_id_by_name(group_name, vpc_id, region="us-east-1"):
     """
     Retrieve the security group ID based on its name and VPC ID.
