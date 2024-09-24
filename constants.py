@@ -14,8 +14,9 @@ bash_script = """cd /home/ubuntu/foundation-model-benchmarking-tool;
                     echo "The current environment is fmbench_python311. Running FMBench..."
                     
                     # Run fmbench and redirect output to a log file
-                    nohup fmbench --config-file {config_file} --local-mode yes --write-bucket placeholder --tmp-dir /tmp > fmbench.log 2>&1
+                    nohup fmbench --config-file {config_file} --local-mode yes --write-bucket placeholder --tmp-dir /tmp > fmbench.log 2>&1 &
                     
+                    FM_BENCH_PID=$!
                     echo "FMBench execution completed."
                     
                     # Check if any directory matching results-* exists

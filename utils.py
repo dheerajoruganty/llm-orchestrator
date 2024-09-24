@@ -635,7 +635,9 @@ def upload_and_execute_script_invoke_shell(
         time.sleep(1)  # Wait for the command to complete
 
         # Execute the script
-        shell.send(f"bash -l -c '{remote_script_path}'\n")
+        shell.send(
+            f"nohup bash {remote_script_path} > /home/ubuntu/run_fmbench_nohup.log 2>&1 & disown\n"
+        )
         time.sleep(1)  # Wait for the command to complete
 
         # Read the output of the script

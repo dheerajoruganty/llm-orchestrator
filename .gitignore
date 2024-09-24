@@ -1,2 +1,10 @@
-.pem
-output/*
+# Ignore Python cache directories
+__pycache__/
+*.py[cod]
+
+# Ignore .pem files
+*.pem
+
+# Ignore output folder
+output/
+downloaded_configs/*.yml
