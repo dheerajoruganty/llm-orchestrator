@@ -4,7 +4,7 @@ __pycache__/
 
 # Ignore .pem files
 *.pem
-
+*.log
 # Ignore output folder
 output/
 downloaded_configs/*.yml

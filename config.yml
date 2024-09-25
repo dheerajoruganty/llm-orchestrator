@@ -33,6 +33,15 @@ instances:
     ami_id: ami-05c3e698bd0cffe7e
     startup_script: startup_scripts/gpu_ubuntu_startup.txt
     fmbench_config: https://raw.githubusercontent.com/dheerajoruganty/multi-deploy-ec2/refs/heads/main/configs/config-ec2-llama3-8b.yml
+  - instance_type: g5.2xlarge
+    ami_id: ami-05c3e698bd0cffe7e
+    startup_script: startup_scripts/gpu_ubuntu_startup.txt
+    fmbench_config: https://raw.githubusercontent.com/dheerajoruganty/multi-deploy-ec2/refs/heads/main/configs/config-ec2-llama3-8b.yml
+  - instance_type: g5.2xlarge
+    ami_id: ami-05c3e698bd0cffe7e
+    startup_script: startup_scripts/gpu_ubuntu_startup.txt
+    fmbench_config: https://raw.githubusercontent.com/dheerajoruganty/multi-deploy-ec2/refs/heads/main/configs/config-ec2-llama3-8b.yml
+
   # - instance_type: t3.micro
   #   ami_id: ami-07f302d2a74e2b584
   #   startup_script: startup_scripts/az_linux2_startup.txt
