@@ -755,3 +755,87 @@ async def handle_config_file_async(instance):
     )
 
     return remote_config_path
+
+
+def check_completion_flag(
+    hostname, username, key_file_path, flag_file_path="/tmp/startup_complete.flag"
+):
+    """
+    Checks if the startup flag file exists on the EC2 instance.
+
+    Args:
+        hostname (str): The public IP or DNS of the EC2 instance.
+        username (str): The SSH username (e.g., 'ubuntu').
+        key_file_path (str): The path to the PEM key file.
+        flag_file_path (str): The path to the startup flag file on the instance. Default is '/tmp/startup_complete.flag'.
+
+    Returns:
+        bool: True if the flag file exists, False otherwise.
+    """
+    try:
+        # Initialize the SSH client
+        ssh_client = paramiko.SSHClient()
+        ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+
+        # Load the private key
+        private_key = paramiko.RSAKey.from_private_key_file(key_file_path)
+
+        # Connect to the instance
+        ssh_client.connect(hostname, username=username, pkey=private_key)
+        print(f"Connected to {hostname} as {username}")
+
+        # Check if the flag file exists
+        stdin, stdout, stderr = ssh_client.exec_command(
+            f"test -f {flag_file_path} && echo 'File exists'"
+        )
+        output = stdout.read().decode().strip()
+        error = stderr.read().decode().strip()
+
+        # Close the connection
+        ssh_client.close()
+
+        # Return True if the file exists, otherwise False
+        return output == "File exists"
+
+    except Exception as e:
+        print(f"Error connecting via SSH to {hostname}: {e}")
+        return False
+
+
+def wait_for_flag(
+    instance,
+    max_wait_time=600,
+    check_interval=30,
+    flag_file_path="/tmp/startup_complete.flag",
+):
+    """
+    Waits for the startup flag file on the EC2 instance, and returns the script if the flag file is found.
+
+    Args:
+        instance (dict): The dictionary containing instance details (hostname, username, key_file_path).
+        formatted_script (str): The bash script content to be executed.
+        remote_script_path (str): The remote path where the script should be saved on the instance.
+        max_wait_time (int): Maximum wait time in seconds (default: 600 seconds or 10 minutes).
+        check_interval (int): Interval time in seconds between checks (default: 30 seconds).
+    """
+    elapsed_time = 0
+    while elapsed_time < max_wait_time:
+        # Check if the startup flag exists on the instance
+        startup_complete = check_completion_flag(
+            hostname=instance["hostname"],
+            username=instance["username"],
+            key_file_path=instance["key_file_path"],
+            flag_file_path=flag_file_path,
+        )
+
+        if startup_complete:
+            return True
+
+        # Wait for the specified check interval before trying again
+        print(
+            f"{flag_file_path} flag file not found. Checking again in {check_interval} seconds..."
+        )
+        time.sleep(check_interval)
+        elapsed_time += check_interval
+
+    return False
