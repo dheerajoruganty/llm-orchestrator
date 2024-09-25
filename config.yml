@@ -1,7 +1,7 @@
 aws:
   region: us-east-1
   iam_instance_profile_arn: arn:aws:iam::471112568442:instance-profile/EC2
-  hf_token: 
+  hf_token: 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
   
 
 run_steps:

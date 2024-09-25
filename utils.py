@@ -484,6 +484,7 @@ def check_and_retrieve_results_folder(instance, local_folder_base):
     hostname = instance["hostname"]
     username = instance["username"]
     key_file_path = instance["key_file_path"]
+    instance_id = instance['instance_id']
 
     # Check for 'results-*' folders in the specified directory
     results_folders = check_for_results_folder(hostname, username, key_file_path)
@@ -492,7 +493,7 @@ def check_and_retrieve_results_folder(instance, local_folder_base):
     for folder in results_folders:
         if folder:  # Check if folder name is not empty
             # Create a local folder path for this instance
-            local_folder = os.path.join(local_folder_base, os.path.basename(folder))
+            local_folder = os.path.join(local_folder_base, instance_id, os.path.basename(folder))
             os.makedirs(
                 local_folder, exist_ok=True
             )  # Create local directory if it doesn't exist
@@ -540,6 +541,7 @@ def generate_instance_details(
                     "username": username,
                     "key_file_path": key_file_path,
                     "config_file": config_path,
+                    "instance_id": instance_id,
                 }
             )
         else:

@@ -38,13 +38,9 @@ async def execute_fmbench(instance, formatted_script, remote_script_path):
     """
     # Check for the startup completion flag
 
-    
-
     startup_complete = await asyncio.get_event_loop().run_in_executor(
         executor, wait_for_flag, instance, 600, 30, "/tmp/startup_complete.flag"
     )
-
-    
 
     if startup_complete:
         # Handle configuration file (download/upload) and get the remote path
@@ -52,8 +48,10 @@ async def execute_fmbench(instance, formatted_script, remote_script_path):
 
         # Format the script with the remote config file path
         # Change this later to be a better implementation, right now it is bad.
-        formatted_script = formatted_script.format(hf_token=hf_token, config_file=remote_config_path)
-        
+        formatted_script = formatted_script.format(
+            hf_token=hf_token, config_file=remote_config_path
+        )
+
         print("Startup Script complete, executing fmbench now")
 
         # Upload and execute the script on the instance
@@ -105,7 +103,7 @@ if __name__ == "__main__":
     config_data = load_yaml_file(yaml_file_path)
     logger.info(f"Loaded Config {config_data}")
 
-    hf_token = config_data["aws"].get('hf_token')
+    hf_token = config_data["aws"].get("hf_token")
 
     logger.info(f"Creating Security Groups. Skipping if they exist")
     if config_data["run_steps"]["security_group_creation"]:
@@ -164,9 +162,12 @@ if __name__ == "__main__":
                 instance_type,
                 iam_arn,
             )
-            time.sleep(15)
+
             instance_id_list.append(instance_id)
             fmbench_config_map.append({instance_id: instance["fmbench_config"]})
+
+    logger.info("Going to Sleep for 60 seconds to make sure the instances are up")
+    time.sleep(60)
 
     if config_data["run_steps"]["run_bash_script"]:
         instance_details = generate_instance_details(
