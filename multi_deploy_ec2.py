@@ -21,6 +21,7 @@ executor = ThreadPoolExecutor()
 
 instance_id_list = []
 fmbench_config_map = []
+fmbench_post_startup_script_map = []
 
 logging.basicConfig(
     level=logging.INFO,  # Set the log level to INFO
@@ -78,23 +79,30 @@ async def execute_fmbench(instance, formatted_script, remote_script_path):
             )
 
 
-async def multi_deploy_fmbench(instance_details, bash_script, remote_script_path):
+async def multi_deploy_fmbench(instance_details, remote_script_path):
     tasks = []
 
     # Create a task for each instance
     for instance in instance_details:
+        #Make this async as well?
         # Format the script with the specific config file
-        formatted_script = bash_script
+        logger.info(f"Instance Details are: {instance}")
+        logger.info(f"Attempting to open bash script at {instance['post_startup_script']}")
+        with open(instance['post_startup_script']) as file:
+            bash_script = file.read()
+        
+        logger.info("Read Bash Script")
+        logger.info(f"{bash_script}")
 
         # Create an async task for this instance
-        tasks.append(execute_fmbench(instance, formatted_script, remote_script_path))
+        tasks.append(execute_fmbench(instance, bash_script, remote_script_path))
 
     # Run all tasks concurrently
     await asyncio.gather(*tasks)
 
 
 async def main():
-    await multi_deploy_fmbench(instance_details, bash_script, remote_script_path)
+    await multi_deploy_fmbench(instance_details, remote_script_path)
 
 
 logger = logging.getLogger(__name__)
@@ -165,13 +173,14 @@ if __name__ == "__main__":
 
             instance_id_list.append(instance_id)
             fmbench_config_map.append({instance_id: instance["fmbench_config"]})
+            fmbench_post_startup_script_map.append({instance_id: instance['post_startup_script']})
 
     logger.info("Going to Sleep for 60 seconds to make sure the instances are up")
     time.sleep(60)
 
     if config_data["run_steps"]["run_bash_script"]:
         instance_details = generate_instance_details(
-            instance_id_list, PRIVATE_KEY_FNAME, fmbench_config_map, region="us-east-1"
+            instance_id_list, PRIVATE_KEY_FNAME, fmbench_config_map, fmbench_post_startup_script_map, region="us-east-1"
         )  # Call the async function
         asyncio.run(main())
 

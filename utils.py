@@ -507,7 +507,7 @@ def check_and_retrieve_results_folder(instance, local_folder_base):
 
 
 def generate_instance_details(
-    instance_id_list, key_file_path, config_map, region="us-east-1"
+    instance_id_list, key_file_path, config_map, post_startup_script, region="us-east-1"
 ):
     """
     Generates a list of instance details dictionaries containing hostname, username, and key file path.
@@ -525,6 +525,8 @@ def generate_instance_details(
     for instance_id in instance_id_list:
         config_entry = next((item for item in config_map if instance_id in item), None)
 
+        
+
         # If a config entry is found, get the config path
         if config_entry:
             config_path = config_entry[instance_id]
@@ -533,6 +535,9 @@ def generate_instance_details(
             instance_id, region, public_dns=True
         )
 
+        script_entry = next((item for item in post_startup_script if instance_id in item), None)
+        post_start_script = script_entry[instance_id] if script_entry else None
+    
         # Append the instance details to the list if hostname and username are found
         if public_hostname and username:
             instance_details.append(
@@ -542,11 +547,13 @@ def generate_instance_details(
                     "key_file_path": key_file_path,
                     "config_file": config_path,
                     "instance_id": instance_id,
+                    "post_startup_script" : post_start_script
                 }
             )
         else:
             print(
                 f"Failed to retrieve hostname and username for instance {instance_id}"
+                f"{post_start_script}"
             )
 
     return instance_details
