@@ -210,7 +210,12 @@ def create_ec2_instance(
     ami,
     instance_type,
     iam_arn,
-    region="us-east-1",
+    device_name='/dev/sda/1',
+    ebs_del_on_termination=True,
+    ebs_Iops=16000,
+    ebs_VolumeSize=250,
+    ebs_VolumeType='gp3',
+    region='us-east-1',
 ):
     """
     Create an EC2 instance with a startup script (user data) in the specified region.
@@ -225,19 +230,19 @@ def create_ec2_instance(
         str: The ID of the created instance.
     """
     # Initialize a session using Amazon EC2
-    ec2_resource = boto3.resource("ec2", region_name="us-east-1")
+    ec2_resource = boto3.resource("ec2", region_name=region)
 
     try:
         # Create a new EC2 instance with user data
         instances = ec2_resource.create_instances(
             BlockDeviceMappings=[
                 {
-                    "DeviceName": "/dev/sda1",
+                    "DeviceName": device_name,
                     "Ebs": {
-                        "DeleteOnTermination": True,
-                        "Iops": 16000,
-                        "VolumeSize": 250,
-                        "VolumeType": "gp3",
+                        "DeleteOnTermination": ebs_del_on_termination,
+                        "Iops": ebs_Iops,
+                        "VolumeSize": ebs_VolumeSize,
+                        "VolumeType": ebs_VolumeType,
                     },
                 },
             ],
@@ -544,7 +549,7 @@ def generate_instance_details(
                 {
                     "hostname": public_hostname,
                     "username": username,
-                    "key_file_path": key_file_path,
+                    "key_file_path": key_file_path + ".pem",
                     "config_file": config_path,
                     "instance_id": instance_id,
                     "post_startup_script" : post_start_script
