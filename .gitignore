@@ -2,9 +2,16 @@
 __pycache__/
 *.py[cod]
 
-# Ignore .pem files
+# Ignore .pem & log files
 *.pem
 *.log
-# Ignore output folder
+
+# Ignore folders
 output/
-downloaded_configs/*.yml
+downloaded_configs/
+fmbench_llm_utils/
+.venv/
+configs/fmbench/
+results/
+analytics/__pycache__
+analytics/results
